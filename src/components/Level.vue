@@ -382,10 +382,10 @@ export default {
             return this.maxCurrentEvolve;
         },
         targetEvolve() {
-            if(this.fields.targetEvolve < this.maxCurrentEvolve) {
-                return this.fields.targetEvolve;
+            if(this.fields.targetEvolve < this.currentEvolve) {
+                return this.currentEvolve;
             }
-            return this.maxTargetEvolve;
+            return this.fields.targetEvolve;
         },
         IsEvolveSame() {
             return this.targetEvolve === this.currentEvolve;
