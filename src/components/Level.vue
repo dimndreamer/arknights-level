@@ -186,13 +186,6 @@
                     精英化花费
                 </span>
             </v-tooltip>
-            
-            <!-- <div>经验：{{ calc.exps }}</div>
-            <div>钱：{{ calc.costs }}</div>
-            <div>钱：{{ calc.evolveCosts }}</div>
-            <div>maxTargetLevel {{ maxTargetLevel }}</div>
-            <div>maxTargetEvolve {{ maxTargetEvolve }}</div>
-            <div>fields.targetLevel {{ fields.targetLevel }}</div> -->
         </v-card-text>
         <guide
             v-if="renderGuide"
@@ -312,7 +305,6 @@ export default {
             return results;
         },
         rarity() {
-            // 因为值是绑定在item-group上的，所以就直接是zero-base
             return this.fields.rarity;
         },
         maxCurrentLevel() {
@@ -421,12 +413,6 @@ export default {
                 this.fields.currentLevel = this.maxCurrentLevel;
             }
         },
-        // 即便是在created赋值，也会触发watch的内容
-        // 'fields.currentLevel'() {
-        //     if(this.fields.currentEvolve === this.fields.targetEvolve) {
-        //         this.syncTargetLevel();
-        //     }
-        // }
     },
     mounted() {
         if(!localStorage.getItem('guide_finished') || localStorage.getItem('guide_finished') === 'false') {
@@ -449,7 +435,6 @@ export default {
             this.fields.rarity = value - 1;
         },
         triggerCurrentEvolve(value) {
-            // 点击当前值，会自动确定目标值，因为目标值总是大于等于当前值
             this.fields.currentEvolve = value;
         },
         triggerTargetEvolve(value) {
@@ -460,8 +445,6 @@ export default {
             this.options.alwaysMaxCurrentLevel = false;
         },
         maximizeCurrentLevel() {
-            // 点击最大值之后，修改选项，再通过watch锁定最大值
-            // 这个锁定的操作其实更多的是一个炫技的成分
             this.fields.currentLevel = this.maxCurrentLevel;
             this.options.alwaysMaxCurrentLevel = true;
         },
@@ -477,12 +460,10 @@ export default {
             this.fields.targetLevel = 1;
         },
         onTargetLevelChange(value) {
-            // 通过监听change事件，实现释放鼠标的时候改变值
             this.fields.targetLevel = value;
             this.options.lockTargetLevel = true;
         },
         syncTargetLevel() {
-            // 等级没有手动调整过，并且在同一级
             if(!this.options.lockTargetLevel && this.IsEvolveSame) {
                 this.fields.targetLevel = this.fields.currentLevel;
             }
