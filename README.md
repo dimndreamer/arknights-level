@@ -1,29 +1,5 @@
 # arknights-level
 
-## Project setup
-```
-npm install
-```
+一个明日方舟升级计算器
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+挂在[github](dimndreamer.github.io/level)上了
